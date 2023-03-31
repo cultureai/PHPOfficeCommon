@@ -200,8 +200,12 @@ class OLERead
      *
      * @return string
      */
-    public function getStream(int $stream): ?string
+    public function getStream(?int $stream = null): ?string
     {
+        if ($stream === null) {
+            return '';
+        }
+        
         $streamData = '';
 
         if ($this->props[$stream]['size'] < self::SMALL_BLOCK_THRESHOLD) {
